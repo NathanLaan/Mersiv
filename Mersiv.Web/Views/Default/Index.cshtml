@@ -1,0 +1,54 @@
+﻿@model Mersiv.Web.Models.DashboardModel
+
+@{
+    ViewBag.Title = "Mersiv";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="span12">
+        <h2>Dashboard</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="span3">
+        <b>@Model.TotalEntryCount entries posted.</b>
+    </div>
+    <div class="span3">
+        <b>@Model.TotalReplyCount replies posted.</b>
+    </div>
+    <div class="span3">
+        <b>@Model.TotalVotesCount votes made.</b>
+    </div>
+    <div class="span3">
+        <b>@Model.TotalUsersCount user accounts.</b>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="span12">
+        <h2>Latest Entries</h2>
+    </div>
+</div>
+@foreach (var entry in @Model.LatestEntryList)
+{
+    @Html.DisplayFor(m => entry)
+}
+<hr />
+<div class="row">
+    <div class="span12">
+        <h2>Most Popular Entries</h2>
+    </div>
+</div>
+@foreach (var entry in @Model.PopularEntryList) {
+    @Html.DisplayFor(m => entry)
+}
+<hr />
+<div class="row">
+    <div class="span12">
+        <h2>Most Active Users</h2>
+    </div>
+</div>
+@foreach (var account in @Model.ActiveUserList) {
+    @Html.DisplayFor(m => account)
+}

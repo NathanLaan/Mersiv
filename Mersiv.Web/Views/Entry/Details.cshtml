@@ -1,0 +1,65 @@
+﻿@model Mersiv.Web.Models.EntryDetailsModel
+
+@{
+    ViewBag.Title = "KB Entries";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (@Model.Entry != null && @Model.Entry.Contents != null)
+{
+<div class="row">
+    <div class="span12">
+    <h2>@Model.Entry.Title</h2>
+    </div>
+</div>
+    
+<div class="row">
+    <div class="span7">
+        @Html.Raw(@Model.Entry.HtmlContents)
+        <br />
+        <br />
+    </div>
+    <div class="span4">
+        Posted by: <a href="/account/details/@Model.Entry.Author.ID">@Model.Entry.Author.Name</a><br />
+        @Model.Entry.Timestamp.ToString("ddd MMM yyyy - HH:mm")
+    </div>
+    <div class="span1">        
+    @if (Request.IsAuthenticated)
+    {
+        if (@Model.Entry.AuthorVote)
+        {
+        //todo: show total number of votes +/-
+        }else{
+        <input type="button" title="&#8593;" value="&#8593;" /><br /><input type="button" title="&#8595;" value="&#8595;" />
+        }
+    }else{
+        //todo: show total number of votes +/-
+    }
+    </div>
+</div>
+   
+
+    foreach (var entry in @Model.ResponseList)
+    {
+        @Html.DisplayFor(m => entry)
+    }
+
+    if (Request.IsAuthenticated)
+    {
+    <hr />
+    <div class="row">
+        <div class="span7">
+            @{Html.RenderAction("EntryResponsePartial", "Entry", new { parentID = @Model.Entry.ID, parentTitle = @Model.Entry.Title });}
+        </div>
+    </div>
+    }
+
+}else{
+<div class="row">
+<div class="span12">
+    KB entry not found.
+    <br />
+    <br />
+</div>
+</div>
+}

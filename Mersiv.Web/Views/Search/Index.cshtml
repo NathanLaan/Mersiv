@@ -1,0 +1,30 @@
+﻿@model Mersiv.Lib.Entity.Search
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("index", "search", FormMethod.Get, new { @class = "form-inline" } ))
+{
+<div class="row">
+<div class="span12">
+<h2>Search KB Entries</h2>
+</div>
+</div>
+<br />
+    
+<div class="row">
+<div class="span12">
+    @Html.TextBoxFor(m => m.SearchString, new { @class = "input-xxlarge" })
+</div>
+</div>
+    
+<br />
+    
+<div class="row">
+<div class="span12">
+    <input type="submit" value="Search" />
+</div>
+</div>
+}

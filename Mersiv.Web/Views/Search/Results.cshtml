@@ -1,0 +1,59 @@
+﻿@model Mersiv.Web.Models.SearchModel
+
+@{
+    ViewBag.Title = "KB Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row">
+        <div class="span12">
+<h2>Search Results for "@Model.SearchString"</h2>
+            </div>
+        </div>
+
+
+@if(@Model.List != null){
+    if(Model.List.ToArray().Length > 0){
+        foreach (var entry in @Model.List)
+        {
+        <br />
+        <div class="row">
+            <div class="span7">
+                @if(@entry.ParentID == null){
+                <b><a href="/entry/details/@entry.ID">@entry.Title</a></b>
+                }else{
+                <b><a href="/entry/details/@entry.ParentID">@entry.Title</a></b>
+                }
+            </div>
+            <div class="span5">
+                Posted by: <a href="/account/details/@entry.Author.ID">@entry.Author.Name</a> - @entry.Timestamp
+            </div>
+        </div>
+        }
+        
+
+    <br /><br />
+    <div class="row">
+    <div class="span2">
+    @if(@Model.Page > 1){
+    @Html.ActionLink("Prev Page", "Index", "Search", new { searchString=@Model.SearchString, page = @Model.Page - 1}, null)
+    }
+    </div>
+    <div class="span2">
+    Page @Model.Page - Results @Model.Min to @Model.Max
+    </div>
+    <div class="span2">
+    @Html.ActionLink("Next Page", "Index", "Search", new { searchString=@Model.SearchString, page = @Model.Page + 1}, null)
+    </div>
+    </div>
+        
+    }else{
+        <div class="row">
+            <div class="span12">
+                No results found.
+            </div>
+        </div>
+    <br /><br />
+    <br /><br />
+    }
+}

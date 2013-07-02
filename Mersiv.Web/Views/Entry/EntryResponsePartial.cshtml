@@ -1,0 +1,16 @@
+﻿@model Mersiv.Web.Models.EntryResponseModel
+
+@using (Html.BeginForm("EntryResponsePartial","Entry")) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Reply</legend>
+        @Html.HiddenFor(m => m.Entry.ParentID)
+        @Html.HiddenFor(m => m.Entry.Title)
+        @Html.TextAreaFor(m => m.Entry.Contents, 4, 200, new { @class = "input-xxlarge", @data_provide = "markdown" })
+        @Html.ValidationMessageFor(m => m.Entry.Contents)
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    </fieldset>
+}

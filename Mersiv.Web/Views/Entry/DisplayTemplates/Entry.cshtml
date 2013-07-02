@@ -1,0 +1,28 @@
+﻿@model Mersiv.Lib.Entity.Entry
+
+<hr />
+<div class="row">
+    <div class="span7">
+        @Html.Raw(@Model.HtmlContents)
+        <br />
+        <br />
+    </div>
+    <div class="span4">
+        Posted by: <a href="/account/details/@Model.Author.ID">@Model.Author.Name</a><br />
+        @Model.Timestamp.ToString("ddd MMM yyyy - HH:mm")
+    </div>
+    <div class="span1">
+        @if ( @Model.AuthorVote ){
+            if (@Model.AuthorVoteUp)
+            {
+<div>&#8593;</div>
+            }else{
+<div>&#8595;</div>
+            }
+        }else{
+            if (Request.IsAuthenticated){
+            <input type="button" title="&#8593;" value="&#8593;" /><br /><input type="button" title="&#8595;" value="&#8595;" />
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿@model Mersiv.Lib.Entity.Entry
+<div class="row">
+    <div class="span5">
+        <b><a href="/entry/details/@Model.ID">@Model.Title</a></b>
+    </div>
+    <div class="span5">
+        Posted by: <a href="/account/details/@Model.Author.ID">@Model.Author.Name</a><br />
+        @Model.Timestamp.ToString("ddd MMM yyyy")
+    </div>
+</div>
+<br />

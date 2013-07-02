@@ -1,0 +1,30 @@
+﻿@model Mersiv.Web.Models.EntryModel
+
+@{
+    ViewBag.Title = "KB Add Entry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+<div class="row">
+<div class="span12">
+    <h2>Add Entry</h2>
+
+    @Html.LabelFor(m => m.Title)
+    @Html.TextBoxFor(m => m.Title, new { @class = "input-xxlarge" })
+    @Html.ValidationMessageFor(m => m.Title)
+
+    <br />
+    @Html.LabelFor(m => m.Contents)
+    @Html.TextAreaFor(m => m.Contents, 15, 200, new { @class = "input-xxlarge", @data_provide = "markdown" })
+    @Html.ValidationMessageFor(m => m.Contents)
+
+    <br />
+    @Html.TextBoxFor(m => m.TagListString, new { @class = "input-xxlarge" })
+    @Html.LabelFor(m => m.TagListString)
+
+    <br />
+    <input type="submit" value="Submit" />
+</div>
+</div>
+}

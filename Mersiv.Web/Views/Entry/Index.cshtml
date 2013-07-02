@@ -1,0 +1,40 @@
+﻿@model Mersiv.Web.Models.EntryIndexModel
+
+@{
+    ViewBag.Title = "KB Entries";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+<div class="span12">
+<h2>Entries - Page @Model.Page (@Model.EntryMin to @Model.EntryMax)</h2>
+</div>
+</div>
+
+@foreach (var entry in @Model.List)
+{
+<hr />
+<div class="row">
+    <div class="span7">
+        <b><a href="/entry/details/@entry.ID">@entry.Title</a></b>
+    </div>
+    <div class="span5">
+        Posted by: <a href="/account/details/@entry.Author.ID">@entry.Author.Name</a> on @entry.Timestamp.ToString("ddd MMM yyyy")
+    </div>
+</div>
+}
+
+<br /><br />
+<div class="row">
+<div class="span2">
+@if(@Model.Page > 1){
+@Html.ActionLink("Prev Page", "Page", "Entry", new { id = @Model.Page - 1}, null)
+}
+</div>
+<div class="span2">
+Page @Model.Page - @Model.EntryMin to @Model.EntryMax
+</div>
+<div class="span2">
+@Html.ActionLink("Next Page", "Page", "Entry", new { id = @Model.Page + 1}, null)
+</div>
+</div>

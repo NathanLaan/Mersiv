@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>@ViewBag.Title</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        
+    <link href="/css/absolution.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/bootswatch.css" rel="stylesheet">
+    <link href="/css/ui.jqgrid.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.tablednd.js" type="text/javascript"></script>
+    <script src="/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+    <script src="/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/js/bootstrap-markdown.js" type="text/javascript"></script>
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles")
+    }
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts")
+    }
+
+  </head>
+
+  <body class="preview" id="top" data-spy="scroll" data-target=".subnav" data-offset="80">
+
+  <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/">KB</a>
+        <div class="nav-collapse collapse" id="main-menu">
+        <ul class="nav" id="main-menu-left">
+            <li>@Html.ActionLink("Search", "Index", "search")</li>
+            <li>@Html.ActionLink("Entries", "Index", "entry")</li>
+            <li>@Html.ActionLink("Users", "Index", "users")</li>
+            @if(Request.IsAuthenticated) {
+                <li>@Html.ActionLink("+ Add Entry", "Add", "Entry")</li>
+            }
+        </ul>
+        <ul class="nav pull-right" id="main-menu-right">
+            <li>@Html.Partial("_AccountPartial")</li>
+            <li>@Html.ActionLink("About", "Index", "About")</li>
+        </ul>
+            <!--
+            <form class="navbar-search pull-left" action="/Search" method="post">
+            <input type="text" class="search-query" placeholder="Search">
+            </form>
+            -->
+        </div>
+        </div>
+    </div>
+    </div>
+
+<div class="container">
+    
+    @RenderBody()
+
+    <hr/>
+    <footer id="footer">
+    <p class="pull-right"><a href="#top">Back to top</a></p>
+    <div class="links"><a href="http://mersiv.net">KB</a></div>
+    </footer>
+
+</div><!-- /container -->
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+﻿@model Mersiv.Web.Models.AccountManageModel
+
+@{
+    ViewBag.Title = "KB - Manage Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Manage", "Account", FormMethod.Post, new { @class = "form-inline" }))
+{
+    
+<div class="row">
+<div class="span12">
+<h2>Manage Account - @Model.Name</h2>
+</div>
+</div>
+<br />
+    
+<div class="row">
+<div class="span2">
+    @Html.LabelFor(m => m.Email)
+</div>
+<div class="span10">
+    @Html.TextBoxFor(m => m.Email, new { @class = "input-xlarge" })
+    @Html.ValidationMessageFor(m => m.Email)
+</div>
+</div>
+    
+<div class="row">
+<div class="span2">
+    @Html.LabelFor(m => m.PasswordOld)
+</div>
+<div class="span10">
+    @Html.PasswordFor(m => m.PasswordOld, new { @class = "input-xlarge" })
+    @Html.ValidationMessageFor(m => m.PasswordOld, "You must enter your current password.")
+</div>
+</div>
+    
+<div class="row">
+<div class="span2">
+    @Html.LabelFor(m => m.PasswordNew)
+</div>
+<div class="span10">
+    @Html.PasswordFor(m => m.PasswordNew, new { @class = "input-xlarge" })
+    @Html.ValidationMessageFor(m => m.PasswordNew)
+</div>
+</div>
+    
+<div class="row">
+<div class="span2">
+    @Html.LabelFor(m => m.PasswordNewConfirm)
+</div>
+<div class="span10">
+    @Html.PasswordFor(m => m.PasswordNewConfirm, new { @class = "input-xlarge" })
+    @Html.ValidationMessageFor(m => m.PasswordNewConfirm)
+</div>
+</div>
+    
+<div class="row">
+<div class="span2">
+    &nbsp;
+</div>
+<div class="span10">
+    @Html.CheckBoxFor(m => m.SendEmailNotifications, new { @class = "input-xlarge" })
+    @Html.LabelFor(m => m.SendEmailNotifications)
+</div>
+</div>
+    
+<div class="row">
+<div class="span2">
+    &nbsp;
+</div>
+<div class="span10">
+    <input type="submit" value="Update Account" />
+</div>
+</div>
+}
