@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Mersiv.Lib.Entity
 {
-    class WebLink
+    public class WebLink : BaseEntity
     {
-        public int ID { get; set; }
         public int AccountID { get; set; }
         public string Title { get; set; }
         public string URL { get; set; }

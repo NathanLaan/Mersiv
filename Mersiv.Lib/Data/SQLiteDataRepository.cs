@@ -88,6 +88,30 @@ namespace Mersiv.Lib.Data
 
 
 
+        #region WebLink
+
+        private static readonly string SQL_WebLink_SELECT = "";
+        private static readonly string SQL_WebLink_INSERT = "";
+        private static readonly string SQL_WebLink_UPDATE = "";
+
+        public WebLink Add(WebLink webLink)
+        {
+
+
+            return webLink;
+        }
+
+        public List<WebLink> GetListForAccount(int accountID)
+        {
+            List<WebLink> list = new List<WebLink>();
+
+
+            return list;
+        }
+
+        #endregion
+
+
 
         private static readonly string SQL_EntryVote_SELECT
             = "SELECT ID,EntryID,AccountID,Vote FROM [EntryVote]"
