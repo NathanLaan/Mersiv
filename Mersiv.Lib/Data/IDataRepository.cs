@@ -8,6 +8,11 @@ namespace Mersiv.Lib.Data
     {
 
 
+        WebLink Add(WebLink webLink);
+
+        List<WebLink> GetListForAccount(int accountID);
+
+
         #region Tag
 
         /// <summary>

@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using Mersiv.Web.Models;
 using Mersiv.Lib.Data;
+using System.Web.Security;
 
 namespace Mersiv.Web.Controllers
 {
@@ -22,14 +23,23 @@ namespace Mersiv.Web.Controllers
         public ActionResult Index()
         {
             DashboardModel model = new DashboardModel();
-            model.TotalEntryCount = this.dataRepository.GetTotalEntryCount();
-            model.TotalReplyCount = this.dataRepository.GetTotalReplyCount();
-            model.TotalUsersCount = this.dataRepository.GetTotalUsersCount();
-            model.TotalVotesCount = this.dataRepository.GetTotalVotesCount();
-            model.LatestEntryList = this.dataRepository.GetLatestEntryList();
-            model.PopularEntryList = this.dataRepository.GetPopularEntryList();
-            model.ActiveUserList = this.dataRepository.GetActiveAccountList();
+            if (User.Identity.IsAuthenticated)
+            {
+                model.WebLinkList = this.dataRepository.GetListForAccount(GetFormsAuthenticationID());
+            }
+            else
+            {
+                //TODO
+            }
             return View(model);
+        }
+
+
+        private int GetFormsAuthenticationID()
+        {
+            FormsIdentity id = (FormsIdentity)User.Identity;
+            FormsAuthenticationTicket ticket = id.Ticket;
+            return int.Parse(ticket.UserData);
         }
 
     }
