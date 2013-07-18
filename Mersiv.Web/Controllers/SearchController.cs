@@ -13,7 +13,7 @@ namespace Mersiv.Web.Controllers
         private IDataRepository dataRepository;
         public SearchController()
         {
-            string cs = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["KB-SQLiteDB"].ConnectionString;
+            string cs = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["SQLiteDB"].ConnectionString;
             this.dataRepository = new SQLiteDataRepository(System.Web.HttpContext.Current.Server.MapPath(cs));
         }
 

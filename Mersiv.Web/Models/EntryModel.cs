@@ -14,7 +14,7 @@ namespace Mersiv.Web.Models
 
         [Required]
         [StringLength(255)]
-        [Display(Name = "KB Entry Title")]
+        [Display(Name = "Mersiv Entry Title")]
         public string Title { get; set; }
 
         public string Contents { get; set; }

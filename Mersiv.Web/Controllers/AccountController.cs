@@ -27,7 +27,7 @@ namespace Mersiv.Web.Controllers
             //
             // TODO: Factory
             //
-            string cs = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["KB-SQLiteDB"].ConnectionString;
+            string cs = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["SQLiteDB"].ConnectionString;
             this.dataRepository = new SQLiteDataRepository(System.Web.HttpContext.Current.Server.MapPath(cs));
         }
 
@@ -236,11 +236,11 @@ namespace Mersiv.Web.Controllers
                             Properties.Settings.Default.MailUsername,
                             Properties.Settings.Default.MailPassword,
                             Properties.Settings.Default.MailUsername,
-                            "KB",
+                            "Mersiv",
                             account.Email,
                             account.Name,
-                            "KB Account Created",
-                            "KB Account Created: " + account.Name + " - " + account.Email,
+                            "Mersiv Account Created",
+                            "Mersiv Account Created: " + account.Name + " - " + account.Email,
                             true);
                         
                         return RedirectToAction("Index", "Default");
@@ -309,10 +309,10 @@ namespace Mersiv.Web.Controllers
                         Properties.Settings.Default.MailUsername,
                         Properties.Settings.Default.MailPassword,
                         Properties.Settings.Default.MailUsername,
-                        "KB",
+                        "Mersiv",
                         account.Email,
                         account.Name,
-                        "KB Account Password Reset",
+                        "Mersiv Account Password Reset",
                         "A password reset was requested for your account <b>" + account.Name + "</b>"
                             + "<br/><br/>Your password has been reset: " 
                             + newPassword 
