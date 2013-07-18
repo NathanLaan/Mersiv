@@ -48,13 +48,11 @@
         </a>
         <a class="brand" href="/">Mersiv</a>
         <div class="nav-collapse collapse" id="main-menu">
-            1.<div class="dropdown">2.  <!-- Link or button to toggle dropdown -->3.  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">4.    <li><a tabindex="-1" href="#">Action</a></li>5.    <li><a tabindex="-1" href="#">Another action</a></li>6.    <li><a tabindex="-1" href="#">Something else here</a></li>7.    <li class="divider"></li>8.    <li><a tabindex="-1" href="#">Separated link</a></li>9.  </ul>10.</div>
         <ul class="nav" id="main-menu-left">
             <li>@Html.ActionLink("Search", "Index", "search")</li>
-            <li>@Html.ActionLink("Entries", "Index", "entry")</li>
             <li>@Html.ActionLink("Users", "Index", "users")</li>
             @if(Request.IsAuthenticated) {
-                <li>@Html.ActionLink("+ Add Entry", "Add", "Entry")</li>
+                <li>@Html.ActionLink("+ Add Link", "Add", "Link")</li>
             }
         </ul>
         <ul class="nav pull-right" id="main-menu-right">
