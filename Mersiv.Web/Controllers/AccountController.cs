@@ -139,7 +139,7 @@ namespace Mersiv.Web.Controllers
             if (ModelState.IsValid)
             {
                 Account account = this.dataRepository.GetAccount(model.Username);
-                if (account != null)
+                if (account != null && account.Name != null)
                 {
 
                     //
